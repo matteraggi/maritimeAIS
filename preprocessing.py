@@ -46,13 +46,24 @@ df_interp = df_interp[
 ]
 
 # === 5. Normalizzazione ===
+# === 5. Normalizzazione e salvataggio statistiche ===
 numeric_cols = ["X", "Y", "SOG", "COG", "Heading"]
+
+# Calcola statistiche
 stats = df_interp[numeric_cols].describe()
+means = stats.loc["mean"].to_dict()
+stds = stats.loc["std"].to_dict()
+
+# Applica normalizzazione
 df_norm = df_interp.copy()
 for col in numeric_cols:
-    mean = stats.loc["mean", col]
-    std = stats.loc["std", col]
-    df_norm[col] = (df_norm[col] - mean) / std
+    df_norm[col] = (df_norm[col] - means[col]) / stds[col]
+
+# Salva statistiche per denormalizzazione futura
+os.makedirs("preprocessed", exist_ok=True)
+pd.Series(means).to_json("preprocessed/feature_means.json")
+pd.Series(stds).to_json("preprocessed/feature_stds.json")
+print("✅ Salvate statistiche in preprocessed/feature_means.json e feature_stds.json")
 
 # === 6. Creazione finestre sequenziali ===
 # (qui solo salvataggio lineare; il batching lo farai su Colab)
