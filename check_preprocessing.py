@@ -16,7 +16,7 @@ import numpy as np
 import os
 
 # === CONFIGURAZIONE ===
-FILE_PATH = "./preprocessed/ais_preprocessed.parquet"
+FILE_PATH = "./preprocessed/ais_final.parquet"
 
 # === 1. Controllo esistenza ===
 if not os.path.exists(FILE_PATH):

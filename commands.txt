@@ -1,0 +1,1 @@
+to enter in venv: python -m venv venv
