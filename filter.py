@@ -14,7 +14,7 @@ DATA_DIR = "./input_raw/"        # cartella con i CSV estratti
 LAT_MIN, LAT_MAX = 24, 30        # finestra geografica: Golfo del Messico
 LON_MIN, LON_MAX = -93, -83
 VESSEL_TYPE = 70                 # 70 = Cargo
-N_SHIPS = 10                     # massimo MMSI da mantenere
+N_SHIPS = 50                     # massimo MMSI da mantenere
 OUTPUT_FILE = "./output/ais_subset_2025.parquet"
 
 # === MAPPING COLONNE (Nuovo 2025 -> Standard Progetto) ===

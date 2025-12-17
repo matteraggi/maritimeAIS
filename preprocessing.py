@@ -72,9 +72,10 @@ df_interp = df_interp[
 # === 5. Normalizzazione ===
 # Usiamo solo le feature che servono alla rete. Rimuoviamo Heading (spesso rumoroso).
 numeric_cols = ["X", "Y", "SOG", "COG"]
+cols_to_norm = ["SOG", "COG"]
 
 # Calcola statistiche
-stats = df_interp[numeric_cols].describe()
+stats = df_interp[cols_to_norm].describe()
 means = stats.loc["mean"].to_dict()
 stds = stats.loc["std"].to_dict()
 
@@ -82,7 +83,7 @@ stds = stats.loc["std"].to_dict()
 # Nota: X e Y vengono normalizzati qui. Nel Notebook li denormalizzeremo 
 # usando i JSON per calcolare i delta in metri.
 df_norm = df_interp.copy()
-for col in numeric_cols:
+for col in cols_to_norm:
     # Evita divisione per zero se std è 0 (caso raro ma possibile)
     if stds[col] > 0:
         df_norm[col] = (df_norm[col] - means[col]) / stds[col]
