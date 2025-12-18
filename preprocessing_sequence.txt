@@ -3,4 +3,5 @@
 - merge
 - preprocessing
 - feature engineering
+- open sea
 - check preprocessing
