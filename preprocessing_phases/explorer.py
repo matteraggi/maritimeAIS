@@ -11,7 +11,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # === CONFIG ===
-FILE = "./input_raw/AIS_2024_01_01.csv"   # nome del file scaricato
+FILE = "./input_raw/ais-2025-04-04.csv"   # nome del file scaricato
 SAMPLE_SIZE = 50000           # numero punti da campionare per la mappa
 SHOW_MAP = True               # True = genera scatter geografico
 
